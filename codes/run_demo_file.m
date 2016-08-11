@@ -54,7 +54,13 @@ param.r_th = 3;               % threshold for error ratio
 param.max_dim = 60;           % maximum dimension for binary search
 param.min_dim = 20;           % minimum dimension for binary search
 
-[SDR2,SIR2,SAR2,rec_test_fw] = sep_with_framework(Tr,test,X,param,seeds);
+% separating one source at a time
+% first source = source, second source = interferer
+[SDR2(1,:),SIR2(1,:),SAR2(1,:),rec_test_fw{1}] = sep_with_framework(Tr{1},Tr{2},test{1},test{2},X,param,seeds);
+
+% first source = source, second source = interferer
+[SDR2(2,:),SIR2(2,:),SAR2(2,:),rec_test_fw{2}] = sep_with_framework(Tr{2},Tr{1},test{2},test{1},X,param,seeds);
+
 disp('*********performance with application of framework*********')
 SDR = SDR2
 SIR = SIR2
