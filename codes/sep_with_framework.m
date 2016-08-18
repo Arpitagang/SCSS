@@ -47,7 +47,7 @@ r_ener2=ener2(1,:)./ener2(2,:);
 
 ind = 1;
 dim = [];
-param.r1_min = 6; param.r2_max = 30;
+param.r1_min = 4; param.r2_max = 30;
 
 while (ind <= numel(disc_dim_vec) && isempty(dim))
     if r_ener1(ind) > param.r1_min && r_ener2(ind) < param.r2_max
